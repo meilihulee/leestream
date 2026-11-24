@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="LeeStream v1.0 保姆级图文上手教程：3 分钟完成被控端安装、6 位码配对、画质调优、实时延迟 HUD 与浏览器免安装直连。" />
+    <title>LeeStream v1.0 保姆级图文上手教程（3 分钟连上远控/串流）</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <script defer src="./assets/index-DWihErLe.js"></script>
+    <link rel="stylesheet" href="./assets/index-CfS5vyAH.css">
+  </head>
+  <body class="bg-ink-950 font-sans text-slate-300 antialiased">
+    <div class="bg-aurora pointer-events-none fixed inset-0 -z-10"></div>
+
+    <!-- ===== 顶栏 ===== -->
+    <header class="sticky top-0 z-40 border-b border-white/[0.06] bg-ink-950/70 backdrop-blur-xl">
+      <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+        <a href="#top" class="flex items-center gap-2.5 text-white">
+          <span class="logo-mark"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v14h11" /><path d="M12 9l3 3-3 3" /></svg></span>
+          <span class="font-semibold tracking-tight">LeeStream</span>
+          <span class="rounded-md bg-white/[0.06] px-1.5 py-0.5 font-mono text-[11px] text-slate-400 ring-1 ring-inset ring-white/10">v1.0</span>
+        </a>
+        <nav class="hidden items-center gap-1 text-sm md:flex" aria-label="章节">
+          <a class="nav-link" href="#step1">安装 Host</a>
+          <a class="nav-link" href="#step2">配对连接</a>
+          <a class="nav-link" href="#step3">画质调优</a>
+          <a class="nav-link" href="#step4">HUD 与快捷键</a>
+          <a class="nav-link" href="#step5">浏览器直连</a>
+          <a class="nav-link" href="#faq">排障</a>
+        </nav>
+      </div>
+      <div class="h-0.5 w-full bg-transparent"><div id="progress" class="h-full w-0 bg-gradient-to-r from-sky-400 via-violet-400 to-fuchsia-400"></div></div>
+    </header>
+
+    <main id="top">
+      <!-- ===== Hero ===== -->
+      <section class="mx-auto max-w-6xl px-5 pb-10 pt-16 md:pt-24">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="chip">保姆级图文教程 · 约 3 分钟</span>
+          <h1 class="mt-5 text-balance text-4xl font-bold leading-[1.15] tracking-tight text-white md:text-[3.25rem]">
+            <span class="block">LeeStream v1.0</span>
+            <span class="block">保姆级图文上手教程</span>
+            <span class="mt-2 block bg-gradient-to-r from-sky-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">3 分钟连上远控 / 串流</span>
+          </h1>
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-400 md:text-lg">
+            被控端装好生成 6 位码，主控端输入即连。全程硬件编码（NVENC / AMF / QSV），AV1 / HEVC 低延迟串流，最高 240 FPS，Opus 低延迟音频，实时延迟 HUD 随时看。
+          </p>
+        </div>
+
+        <!-- 时间线 -->
+        <ol class="mx-auto mt-12 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-5" aria-label="五个步骤">
+          <li><a class="step-pill" href="#step1"><span class="step-no">1</span><span><b>被控端安装</b><small>约 60 秒 · 拿 6 位码</small></span></a></li>
+          <li><a class="step-pill" href="#step2"><span class="step-no">2</span><span><b>主控端配对</b><small>约 30 秒 · 输码秒连</small></span></a></li>
+          <li><a class="step-pill" href="#step3"><span class="step-no">3</span><span><b>画质与音频</b><small>约 45 秒 · 一次设好</small></span></a></li>
+          <li><a class="step-pill" href="#step4"><span class="step-no">4</span><span><b>HUD 与快捷键</b><small>边玩边看延迟</small></span></a></li>
+          <li><a class="step-pill" href="#step5"><span class="step-no">5</span><span><b>浏览器直连</b><small>Mac / iPad / 手机</small></span></a></li>
+        </ol>
+
+        <!-- 名词卡 -->
+        <div class="mx-auto mt-10 grid max-w-5xl gap-3 md:grid-cols-2">
+          <div class="glass flex gap-4 rounded-2xl p-5">
+            <div class="icon-tile from-emerald-400/20 to-emerald-400/5 text-emerald-300">H</div>
+            <div><h3 class="font-semibold text-white">被控端 Host</h3><p class="mt-1 text-sm leading-relaxed text-slate-400">被远程控制、负责采集画面并硬件编码的那台 Windows 电脑，比如家里的游戏主机或公司工作站。</p></div>
+          </div>
+          <div class="glass flex gap-4 rounded-2xl p-5">
+            <div class="icon-tile from-sky-400/20 to-sky-400/5 text-sky-300">C</div>
+            <div><h3 class="font-semibold text-white">主控端 Client</h3><p class="mt-1 text-sm leading-relaxed text-slate-400">你手上正在用的设备：Windows 客户端（本教程截图），或 Mac / iPad / 手机上的浏览器。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[200px_1fr]">
+        <!-- 侧边目录 -->
+        <aside class="hidden lg:block">
+          <nav class="sticky top-24 space-y-1 text-sm" aria-label="目录" id="toc">
+            <p class="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">目录</p>
+            <a class="toc-link" href="#step1">01 · 被控端安装</a>
+            <a class="toc-link" href="#step2">02 · 主控端配对</a>
+            <a class="toc-link" href="#step3">03 · 画质与音频</a>
+            <a class="toc-link" href="#step4">04 · HUD 与快捷键</a>
+            <a class="toc-link" href="#step5">05 · 浏览器直连</a>
+            <a class="toc-link" href="#faq">常见排障</a>
+          </nav>
+        </aside>
+
+        <div class="min-w-0 space-y-24 pb-24">
+          <!-- ================= 第一步 ================= -->
+          <section id="step1" class="scroll-mt-24" data-section>
+            <div class="section-head">
+              <span class="section-no">01</span>
+              <div>
+                <p class="section-kicker">第一步 · 被控端（Host）</p>
+                <h2 class="section-title">一键安装，并生成 6 位配对码</h2>
+              </div>
+            </div>
+
+            <div class="mt-8 grid items-start gap-8 xl:grid-cols-[1fr_380px]">
+              <ol class="steps">
+                <li>
+                  <h4>下载并运行安装包</h4>
+                  <p>在被控电脑上运行 <code>LeeStream-Host-Setup-1.0.0.exe</code>，一路「下一步」即可。安装器会自动检测显卡编码器，并为「专用网络」添加防火墙放行规则。</p>
+                </li>
+                <li>
+                  <h4>勾选「以系统服务运行」（推荐）</h4>
+                  <p>勾选后可在登录界面、UAC 弹窗下照常远控，并支持远程发送 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>。玩游戏还需手柄的话，一并勾选「虚拟手柄组件」。</p>
+                </li>
+                <li>
+                  <h4>打开「配对设备」，拿到 6 位码</h4>
+                  <p>右键任务栏托盘里的 LeeStream 图标 → <b>配对设备</b>，窗口里会显示 6 位数字配对码和本机局域网地址。<b>配对码 2 分钟内有效</b>，过期点「刷新」重新生成即可。</p>
+                </li>
+              </ol>
+
+              <!-- 示意：Host 配对窗口 -->
+              <figure class="mock-window" aria-label="示意图：被控端配对窗口">
+                <div class="mock-titlebar"><span class="dot bg-rose-400/80"></span><span class="dot bg-amber-300/80"></span><span class="dot bg-emerald-400/80"></span><span class="ml-2 text-xs text-slate-400">LeeStream Host · 配对设备</span></div>
+                <div class="p-6 text-center">
+                  <p class="text-xs uppercase tracking-[0.16em] text-slate-500">在主控端输入此配对码</p>
+                  <div class="mt-4 flex justify-center gap-2 font-mono text-3xl font-semibold text-white" aria-label="示例配对码 482915">
+                    <span class="code-cell">4</span><span class="code-cell">8</span><span class="code-cell">2</span><span class="w-2"></span><span class="code-cell">9</span><span class="code-cell">1</span><span class="code-cell">5</span>
+                  </div>
+                  <div class="mx-auto mt-5 h-1 w-48 overflow-hidden rounded-full bg-white/[0.06]"><div class="countdown h-full rounded-full bg-gradient-to-r from-sky-400 to-violet-400"></div></div>
+                  <p class="mt-2 text-xs text-slate-500">剩余 <span class="font-mono text-slate-300" data-countdown>1:52</span> · 过期后自动刷新</p>
+                  <div class="mt-5 grid grid-cols-2 gap-2 text-left text-xs">
+                    <div class="rounded-lg bg-black/30 p-2.5 ring-1 ring-inset ring-white/[0.06]"><p class="text-slate-500">本机地址</p><p class="mt-0.5 font-mono text-slate-200">192.168.1.88</p></div>
+                    <div class="rounded-lg bg-black/30 p-2.5 ring-1 ring-inset ring-white/[0.06]"><p class="text-slate-500">硬件编码</p><p class="mt-0.5 font-mono text-emerald-300">NVENC · AV1</p></div>
+                  </div>
+                </div>
+                <figcaption class="border-t border-white/[0.06] px-4 py-2.5 text-center text-[11px] text-slate-500">示意图 · 以实际 Host 界面为准</figcaption>
+              </figure>
+            </div>
+
+            <div class="callout callout-tip mt-8">
+              <b>小贴士：</b>被控端最好用网线接路由器。千兆有线局域网下，网络往返延迟通常在 1 ms 以内，Wi-Fi 则容易出现抖动和丢包。
+            </div>
+          </section>
+
+          <!-- ================= 第二步 ================= -->
+          <section id="step2" class="scroll-mt-24" data-section>
+            <div class="section-head">
+              <span class="section-no">02</span>
+              <div>
+                <p class="section-kicker">第二步 · 主控端（Client）</p>
+                <h2 class="section-title">双击启动，输入 6 位码秒配对</h2>
+              </div>
+            </div>
+
+            <ol class="steps mt-8">
+              <li>
+                <h4>双击启动 LeeStream 客户端</h4>
+                <p>首页「Your hosts」列出所有已保存的主机。每张卡片都会显示：在线状态圆点、显卡型号、实时网络延迟（RTT）、分辨率与刷新率，以及支持的编码格式。</p>
+              </li>
+              <li>
+                <h4>点右上角「Pair new host」</h4>
+                <p>弹窗顶部的「On your network」会<b>自动发现同一局域网内</b>的被控端，点一下即可自动填入地址；已经配对过的主机会显示为 Paired。不在同一网络时，可手动输入 IP 或域名（如 <code>my-pc.local:47989</code>）。</p>
+              </li>
+              <li>
+                <h4>输入 6 位配对码 → 点「Pair host」</h4>
+                <p>每输入一位会自动跳到下一格，也可以直接粘贴整串数字。配对成功后主机卡片会出现在首页，以后点 <b>Connect</b> 就能一键连接，不用再输码。</p>
+              </li>
+            </ol>
+
+            <div class="mt-10 space-y-10">
+              <figure class="shot" data-shot>
+                <div class="shot-frame">
+                  <img src="./screenshots/05-client-launcher-hosts.png" srcset="screenshots/05-client-launcher-hosts.png 1x, screenshots/05-client-launcher-hosts@2x.png 2x" width="1440" height="900" alt="LeeStream 客户端首页：已保存主机卡片，显示在线状态、GPU、亚毫秒级局域网延迟、分辨率与刷新率和 Connect 按钮" loading="lazy" decoding="async" />
+                  <span class="hotspot" style="left: 35.4%; top: 17.7%">1</span>
+                  <span class="hotspot" style="left: 37.8%; top: 24.8%">2</span>
+                  <span class="hotspot" style="left: 37.8%; top: 28.4%">3</span>
+                  <span class="hotspot" style="left: 22.1%; top: 37.2%">4</span>
+                  <span class="hotspot" style="left: 85.3%; top: 8.7%">5</span>
+                </div>
+                <figcaption>
+                  <span class="shot-label">图 05</span>首页主机卡片：
+                  <span class="legend"><i>1</i>在线状态</span><span class="legend"><i>2</i>显卡 · 亚毫秒级 RTT</span><span class="legend"><i>3</i>分辨率@刷新率</span><span class="legend"><i>4</i>一键连接</span><span class="legend"><i>5</i>配对新主机</span>
+                </figcaption>
+              </figure>
+
+              <figure class="shot" data-shot>
+                <div class="shot-frame">
+                  <img src="./screenshots/06-client-6digit-pair.png" srcset="screenshots/06-client-6digit-pair.png 1x, screenshots/06-client-6digit-pair@2x.png 2x" width="1440" height="900" alt="Quick Pair 配对弹窗：局域网自动发现的主机列表、主机地址和已输入的 6 位配对码" loading="lazy" decoding="async" />
+                  <span class="hotspot" style="left: 33.1%; top: 35.4%">1</span>
+                  <span class="hotspot" style="left: 33.1%; top: 58.3%">2</span>
+                  <span class="hotspot" style="left: 33.1%; top: 68.6%">3</span>
+                  <span class="hotspot" style="left: 67.2%; top: 81.1%">4</span>
+                </div>
+                <figcaption>
+                  <span class="shot-label">图 06</span>配对弹窗：
+                  <span class="legend"><i>1</i>局域网自动发现</span><span class="legend"><i>2</i>主机地址</span><span class="legend"><i>3</i>6 位配对码</span><span class="legend"><i>4</i>确认配对</span>
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="callout callout-warn mt-8">
+              <b>提示「Invalid code」？</b>多半是配对码已过期（2 分钟），或输成了另一台主机的码。在被控端点「刷新」拿新码，再输一次即可。
+            </div>
+          </section>
+
+          <!-- ================= 第三步 ================= -->
+          <section id="step3" class="scroll-mt-24" data-section>
+            <div class="section-head">
+              <span class="section-no">03</span>
+              <div>
+                <p class="section-kicker">第三步 · 画质 / 高刷 / 硬编 / 音频</p>
+                <h2 class="section-title">一次调好，之后每台主机自动套用</h2>
+              </div>
+            </div>
+
+            <p class="mt-6 max-w-3xl leading-relaxed text-slate-400">左侧栏进入 <b class="text-slate-200">Stream profile</b>。所有改动<b class="text-slate-200">自动保存</b>，下次连接生效；正在串流时，主机支持的项会实时重新协商。</p>
+
+            <figure class="shot mt-8" data-shot>
+              <div class="shot-frame">
+                <img src="./screenshots/07-client-stream-settings.png" srcset="screenshots/07-client-stream-settings.png 1x, screenshots/07-client-stream-settings@2x.png 2x" width="1440" height="900" alt="Stream profile 设置页：编码 AV1、帧率上限 240、码率滑块 80 Mbps、HDR10 和 4:4:4 已开启、传输方式与音频设置" loading="lazy" decoding="async" />
+                <span class="hotspot" style="left: 68.4%; top: 26.4%">1</span>
+                <span class="hotspot" style="left: 71.5%; top: 33.1%">2</span>
+                <span class="hotspot" style="left: 59.2%; top: 41.1%">3</span>
+                <span class="hotspot" style="left: 83.0%; top: 54.6%">4</span>
+                <span class="hotspot" style="left: 68.2%; top: 76.0%">5</span>
+                <span class="hotspot" style="left: 83.1%; top: 94.1%">6</span>
+              </div>
+              <figcaption>
+                <span class="shot-label">图 07</span>串流设置：
+                <span class="legend"><i>1</i>编码 AV1 / HEVC</span><span class="legend"><i>2</i>帧率 120 / 240</span><span class="legend"><i>3</i>码率</span><span class="legend"><i>4</i>HDR10 · 4:4:4</span><span class="legend"><i>5</i>传输方式</span><span class="legend"><i>6</i>Opus 音频</span>
+                <button type="button" class="ml-auto text-sky-300 hover:text-sky-200" data-open="./screenshots/07b-client-stream-settings-full@2x.png" data-open-alt="Stream profile 完整长图：含 Opus 音频、手柄直通与快捷键">查看完整长图（含手柄与快捷键）→</button>
+              </figcaption>
+            </figure>
+
+            <h3 class="sub-title mt-12">推荐配置，直接照抄</h3>
+            <div class="table-wrap mt-4">
+              <table>
+                <thead><tr><th>使用场景</th><th>编码</th><th>帧率</th><th>码率</th><th>传输</th><th>其他</th></tr></thead>
+                <tbody>
+                  <tr><td><b>有线局域网 · 竞技游戏</b></td><td>AV1 / HEVC</td><td>120 – 240</td><td>50 – 80 Mbps</td><td>Direct UDP LAN</td><td>Fullscreen、手柄直通</td></tr>
+                  <tr><td><b>4K HDR 3A 大作 / 影音</b></td><td>AV1 / HEVC</td><td>60 – 120</td><td>80 – 150 Mbps</td><td>Direct UDP LAN</td><td>HDR10 开</td></tr>
+                  <tr><td><b>远程办公 · 写代码 · 修图</b></td><td>HEVC / AV1</td><td>60</td><td>20 – 40 Mbps</td><td>WebRTC Auto</td><td>4:4:4 开，文字更锐利</td></tr>
+                  <tr><td><b>外网 / 5G 热点 / 酒店 Wi-Fi</b></td><td>Auto</td><td>60</td><td>8 – 15 Mbps</td><td>WebRTC Auto</td><td>先低后高，逐步加码率</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="sub-title mt-12">全显卡硬件编码支持（被控端）</h3>
+            <div class="mt-4 grid gap-3 md:grid-cols-3">
+              <div class="gpu-card gpu-nv"><p class="gpu-brand">NVIDIA · NVENC</p><ul><li><span>H.264 / HEVC</span><b>GTX 10 系及以上</b></li><li><span>AV1</span><b>RTX 40 系及以上</b></li></ul></div>
+              <div class="gpu-card gpu-amd"><p class="gpu-brand">AMD · AMF</p><ul><li><span>H.264 / HEVC</span><b>RX 5000 系及以上</b></li><li><span>AV1</span><b>RX 7000 系及以上</b></li></ul></div>
+              <div class="gpu-card gpu-intel"><p class="gpu-brand">Intel · QSV</p><ul><li><span>H.264 / HEVC</span><b>7 代酷睿核显及以上</b></li><li><span>AV1</span><b>Arc 独显 / Core Ultra</b></li></ul></div>
+            </div>
+            <p class="mt-3 text-xs text-slate-500">表中为各厂商硬件编码能力的大致门槛，实际支持情况以被控端安装时的编码器检测结果为准。编码选 Auto 时，按 AV1 → HEVC → H.264 顺序自动挑选主机支持的最佳格式。</p>
+
+            <div class="mt-10 grid gap-4 md:grid-cols-2">
+              <div class="glass rounded-2xl p-5">
+                <h4 class="flex items-center gap-2 font-semibold text-white"><span class="mini-badge">♪</span>Opus 音频调优</h4>
+                <ul class="mt-3 space-y-2 text-sm leading-relaxed text-slate-400">
+                  <li>打开 <b class="text-slate-200">Opus audio</b>：48 kHz 立体声 / 5.1，低延迟模式，声画同步。</li>
+                  <li>被控端声音来自 Windows「默认播放设备」，没声音先检查这里。</li>
+                  <li>用 5.1 耳机或音箱时，被控端的扬声器配置也要设为 5.1。</li>
+                </ul>
+              </div>
+              <div class="glass rounded-2xl p-5">
+                <h4 class="flex items-center gap-2 font-semibold text-white"><span class="mini-badge">◎</span>画质三原则</h4>
+                <ul class="mt-3 space-y-2 text-sm leading-relaxed text-slate-400">
+                  <li>帧率上限不要超过<b class="text-slate-200">两端显示器</b>的刷新率，超了也看不到。</li>
+                  <li>HDR10、4:4:4 建议配 AV1 / HEVC；用 H.264 时设置页会给出提示。</li>
+                  <li>画面糊先加码率；卡顿掉帧先降码率或帧率。</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================= 第四步 ================= -->
+          <section id="step4" class="scroll-mt-24" data-section>
+            <div class="section-head">
+              <span class="section-no">04</span>
+              <div>
+                <p class="section-kicker">第四步 · 快捷键 / HUD / 多屏 / 隐私</p>
+                <h2 class="section-title">实时延迟 HUD 悬浮球，一眼看穿卡顿原因</h2>
+              </div>
+            </div>
+
+            <figure class="shot mt-8" data-shot>
+              <div class="shot-frame">
+                <img src="./screenshots/08-client-live-hud-overlay.png" srcset="screenshots/08-client-live-hud-overlay.png 1x, screenshots/08-client-live-hud-overlay@2x.png 2x" width="1440" height="900" alt="串流中的玻璃质感 HUD 悬浮窗：端到端延迟、解码、网络 RTT、帧率、码率、丢包实时曲线，以及快捷操作抽屉" loading="lazy" decoding="async" />
+                <span class="hotspot" style="left: 71.5%; top: 4.3%">1</span>
+                <span class="hotspot" style="left: 71.5%; top: 16.7%">2</span>
+                <span class="hotspot" style="left: 98.9%; top: 4.3%">3</span>
+                <span class="hotspot" style="left: 71.5%; top: 40.3%">4</span>
+                <span class="hotspot" style="left: 71.5%; top: 44.4%">5</span>
+                <span class="hotspot" style="left: 85.8%; top: 49.7%">6</span>
+              </div>
+              <figcaption>
+                <span class="shot-label">图 08</span>串流中：
+                <span class="legend"><i>1</i>拖动手柄</span><span class="legend"><i>2</i>6 项实时曲线</span><span class="legend"><i>3</i>快捷操作</span><span class="legend"><i>4</i>切换显示器</span><span class="legend"><i>5</i>隐私黑屏</span><span class="legend"><i>6</i>重连</span>
+              </figcaption>
+            </figure>
+
+            <div class="mt-10 grid gap-6 xl:grid-cols-2">
+              <div>
+                <h3 class="sub-title">四个全局快捷键</h3>
+                <div class="mt-4 divide-y divide-white/[0.06] overflow-hidden rounded-2xl ring-1 ring-inset ring-white/[0.08]">
+                  <div class="hk-row"><span class="keys"><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd class="kbd-hi">H</kbd></span><span>显示 / 隐藏 HUD</span></div>
+                  <div class="hk-row"><span class="keys"><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd class="kbd-hi">F</kbd></span><span>全屏 / 窗口切换</span></div>
+                  <div class="hk-row"><span class="keys"><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd class="kbd-hi">P</kbd></span><span>隐私黑屏开 / 关</span></div>
+                  <div class="hk-row"><span class="keys"><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd class="kbd-hi">Q</kbd></span><span>断开连接</span></div>
+                </div>
+                <p class="mt-3 text-sm text-slate-500">快捷键先由客户端拦截，不会发给被控端。想换组合键，在 Stream profile → Hotkeys 里点一下按键，再按新的组合即可（至少要带 Ctrl / Alt / Win 中的一个）。</p>
+              </div>
+
+              <div>
+                <h3 class="sub-title">HUD 读数怎么看</h3>
+                <div class="table-wrap mt-4">
+                  <table class="table-compact">
+                    <thead><tr><th>指标</th><th><span class="tone-dot bg-emerald-400"></span>流畅</th><th><span class="tone-dot bg-amber-300"></span>注意</th><th>偏高时怎么办</th></tr></thead>
+                    <tbody>
+                      <tr><td>E2E 端到端</td><td>≤ 25 ms</td><td>≤ 45 ms</td><td>先看下面哪项拖后腿</td></tr>
+                      <tr><td>Decode 解码</td><td>≤ 5 ms</td><td>≤ 10 ms</td><td>换 HEVC / H.264，或降分辨率</td></tr>
+                      <tr><td>Network RTT</td><td>≤ 15 ms</td><td>≤ 40 ms</td><td>改用有线 / 5 GHz Wi-Fi</td></tr>
+                      <tr><td>Packet loss 丢包</td><td>≤ 0.5%</td><td>≤ 2%</td><td>降码率，排查无线干扰</td></tr>
+                      <tr><td>FPS 帧率</td><td>≥ 95% 目标</td><td>≥ 80% 目标</td><td>降帧率上限或码率</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="mt-3 text-sm text-slate-500">超过「注意」档会变红。HUD 每秒刷新 2 次，曲线显示最近 30 秒的走势。</p>
+              </div>
+            </div>
+
+            <div class="mt-8 grid gap-3 md:grid-cols-3">
+              <div class="feature"><p class="feature-title">多屏切换</p><p>点 HUD 右上角 <b>···</b> 打开 Quick actions，在 Monitor 里选 <b>1 / 2 / Virtual</b>。被控端没接显示器时选 Virtual（虚拟屏），不会黑屏。</p></div>
+              <div class="feature"><p class="feature-title">隐私黑屏</p><p>打开 <b>Privacy curtain</b> 或按 <kbd>P</kbd> 组合键，被控端本地显示器会熄屏，你这边照常操作，办公室里没人能看到。</p></div>
+              <div class="feature"><p class="feature-title">断线自动重连</p><p>网络闪断时，顶部会出现重连横幅并自动重试，恢复后提示 Reconnected。也可以手动点 <b>Reconnect</b>。</p></div>
+            </div>
+            <p class="mt-4 text-sm text-slate-500">HUD 可以按住左侧点阵随意拖动，位置会被记住；点 <b class="text-slate-300">⌃</b> 可收起成只显示关键数字的精简模式。剪贴板同步状态和 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 也都在 Quick actions 里。</p>
+          </section>
+
+          <!-- ================= 第五步 ================= -->
+          <section id="step5" class="scroll-mt-24" data-section>
+            <div class="section-head">
+              <span class="section-no">05</span>
+              <div>
+                <p class="section-kicker">第五步 · Web Client 免安装直连</p>
+                <h2 class="section-title">Mac / iPad / 手机，打开浏览器就能连</h2>
+              </div>
+            </div>
+
+            <div class="mt-8 grid items-center gap-10 xl:grid-cols-[1fr_auto]">
+              <ol class="steps">
+                <li><h4>在被控端开启 Web Client</h4><p>托盘菜单 → 设置 → 打开 <b>Web Client</b> 开关，页面会显示访问地址，例如 <code>https://192.168.1.88:47989</code>。</p></li>
+                <li><h4>设备上用浏览器打开该地址</h4><p>推荐 Safari（macOS / iPadOS / iOS）或最新版 Chrome、Edge。首次访问如提示证书不受信任，确认是自己的主机后选择继续访问。</p></li>
+                <li><h4>输入 6 位配对码</h4><p>与第二步完全相同。配对成功后浏览器会记住这台设备，下次打开地址即可直连。</p></li>
+                <li><h4>添加到主屏幕（可选）</h4><p>iPad / iPhone 在 Safari 点「分享 → 添加到主屏幕」，之后像 App 一样全屏打开，没有地址栏遮挡。</p></li>
+              </ol>
+
+              <div class="flex items-end justify-center gap-5" aria-label="示意图：iPad 与手机浏览器直连">
+                <div class="device device-tablet">
+                  <div class="device-screen">
+                    <div class="browser-bar"><span class="lock">🔒</span>192.168.1.88:47989</div>
+                    <div class="device-stream"><div class="mini-hud"><span class="text-emerald-300">● 18 ms</span><span>60 fps</span><span class="text-sky-300">HEVC</span></div></div>
+                  </div>
+                </div>
+                <div class="device device-phone">
+                  <div class="device-screen">
+                    <div class="browser-bar text-[8px]"><span class="lock">🔒</span>192.168.1.88</div>
+                    <div class="device-stream"><div class="mini-hud text-[7px]"><span class="text-emerald-300">● 21 ms</span></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="mt-3 text-xs text-slate-500">示意图 · 以实际 Web Client 界面为准</p>
+
+            <div class="callout callout-tip mt-8">
+              <b>浏览器端编码选 Auto 最省心：</b>会自动协商当前设备能硬件解码的格式。较新的 Apple 芯片设备可解 AV1，老设备会回落到 HEVC 或 H.264。外网访问请保持 <b>WebRTC Auto</b>，会自动穿透 NAT，必要时走中继。
+            </div>
+
+            <!-- FAQ -->
+            <div id="faq" class="scroll-mt-24 pt-16" data-section>
+              <h3 class="sub-title">常见排障</h3>
+              <div class="mt-5 space-y-2.5">
+                <details class="faq" open>
+                  <summary>局域网自动发现里找不到被控端？</summary>
+                  <div><p>1）两台设备要在<b>同一网段</b>（例如都是 192.168.1.x），访客网络和开了「AP 隔离」的 Wi-Fi 互相看不到；2）被控端的 Windows 网络类型要设为「专用网络」，并确认防火墙放行了 LeeStream Host；3）实在找不到，直接在配对弹窗手动输入被控端 IP。</p></div>
+                </details>
+                <details class="faq">
+                  <summary>提示 Invalid code / 配对失败？</summary>
+                  <div><p>配对码 2 分钟有效，过期后到被控端「配对设备」里刷新；确认输入的是<b>这台</b>被控端的码，地址也要对应同一台主机。</p></div>
+                </details>
+                <details class="faq">
+                  <summary>连上后黑屏 / 没画面？</summary>
+                  <div><p>① 被控端没接显示器或显示器关着：在 Quick actions 里切到 <b>Virtual</b> 虚拟屏；② 可能开着隐私黑屏：按 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> 关掉；③ 停在登录界面或 UAC 弹窗时黑屏：重装 Host 并勾选「以系统服务运行」。</p></div>
+                </details>
+                <details class="faq">
+                  <summary>延迟高、画面卡顿怎么排查？</summary>
+                  <div><p>按 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd> 打开 HUD，看哪一项变黄或变红：<b>RTT 高</b>是网络问题，换网线或 5 GHz Wi-Fi；<b>Decode 高</b>是主控端解码吃力，换 HEVC / H.264 或降分辨率；<b>丢包高</b>就降码率；<b>FPS 不足</b>先降帧率上限。</p></div>
+                </details>
+                <details class="faq">
+                  <summary>没有声音？</summary>
+                  <div><p>确认 Stream profile 里的 <b>Opus audio</b> 已打开；被控端 Windows 的「默认播放设备」要是实际在出声的设备；浏览器端第一次需要点一下画面，才允许播放声音。</p></div>
+                </details>
+                <details class="faq">
+                  <summary>文字发糊、看代码费眼？</summary>
+                  <div><p>打开 <b>Chroma 4:4:4</b>，同时把码率提到 30 Mbps 以上，编码选 HEVC 或 AV1。</p></div>
+                </details>
+                <details class="faq">
+                  <summary>开了 HDR 画面发灰？</summary>
+                  <div><p>HDR 需要两端同时支持：被控端在 Windows「显示设置」里打开「使用 HDR」，主控端显示器也要开 HDR，编码选 AV1 或 HEVC。</p></div>
+                </details>
+                <details class="faq">
+                  <summary>手柄没反应？</summary>
+                  <div><p>确认 Stream profile 里的 <b>Gamepad passthrough</b> 已打开，并且被控端安装时勾选了「虚拟手柄组件」。连接后再插拔一次手柄，或者重连一次会话。</p></div>
+                </details>
+                <details class="faq">
+                  <summary>在外面连不上家里的电脑？</summary>
+                  <div><p>传输方式保持 <b>WebRTC Auto</b>（Direct UDP LAN 只适用于局域网），会自动穿透 NAT，不行时走中继；先把码率降到 10 Mbps 左右试连，稳定后再往上加。</p></div>
+                </details>
+              </div>
+            </div>
+          </section>
+
+          <!-- 完成 -->
+          <section class="glass relative overflow-hidden rounded-3xl p-8 text-center md:p-12">
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-500/10 via-violet-500/10 to-fuchsia-500/10"></div>
+            <p class="relative text-3xl">🎉</p>
+            <h2 class="relative mt-3 text-2xl font-bold text-white md:text-3xl">搞定！开始你的低延迟串流吧</h2>
+            <p class="relative mx-auto mt-3 max-w-xl text-slate-400">记住两个组合键就够了：<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd> 看延迟，<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Q</kbd> 断开连接。</p>
+            <a href="#top" class="relative mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-sky-400 to-sky-500 px-5 py-2.5 font-semibold text-ink-950 shadow-[0_8px_30px_-8px_rgba(56,189,248,0.7)] transition hover:brightness-110">回到顶部 ↑</a>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="border-t border-white/[0.06] py-8 text-center text-xs text-slate-500">
+      LeeStream v1.0 · 图文上手教程 · 截图来自客户端演示模式，延迟等数值为模拟数据
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 p-4 backdrop-blur-md md:p-10" role="dialog" aria-modal="true" aria-label="查看大图">
+      <button type="button" id="lightbox-close" class="absolute right-4 top-4 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white hover:bg-white/20" aria-label="关闭">关闭 ✕</button>
+      <div class="max-h-full overflow-auto rounded-xl ring-1 ring-white/10"><img id="lightbox-img" alt="" class="block max-w-full" /></div>
+    </div>
+
+  </body>
+</html>
