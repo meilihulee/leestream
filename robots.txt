@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://leestream.pages.dev/sitemap.xml
+Sitemap: https://meilihulee.github.io/leestream/sitemap.xml

@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LeeStream: Sub-12ms Remote Desktop & 8K60 Game Streaming for Windows</title>
-    <meta name="description" content="LeeStream is a Rust + C++ remote desktop and game streaming suite for Windows: sub-12ms LAN latency, 8K60 split-encode, 4K120, HDR10, 4:4:4, NVENC/AMF/QSV, zero-config WAN via WebRTC, and a zero-install Web Client. Free forever." />
-    <meta name="keywords" content="remote desktop, game streaming, low latency, 8K streaming, 4K120, HDR10, 4:4:4, NVENC, AMF, QSV, WebRTC, Parsec alternative, Moonlight alternative, Sunshine alternative" />
+    <title>LeeStream v1.2: Permanent Device ID, Self-Hostable Relay & 4G Auto-Reconnect</title>
+    <meta name="description" content="LeeStream is a Rust + C++ remote desktop and game streaming suite for Windows: sub-12ms LAN latency, 8K60 split-encode, 4K120, HDR10, 4:4:4, NVENC/AMF/QSV, zero-config WAN via WebRTC, a zero-install Web Client, and In-Car Cockpit Mode for Tesla, Li Auto, Xiaomi SU7, AITO, NIO, XPeng, BYD and Zeekr screens. Free forever." />
+    <meta name="keywords" content="remote desktop, game streaming, low latency, 8K streaming, 4K120, HDR10, 4:4:4, NVENC, AMF, QSV, WebRTC, Parsec alternative, Moonlight alternative, Sunshine alternative, car screen streaming, Tesla browser streaming, 车机串流, 车载大屏远程桌面" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#07080b" />
     <meta name="color-scheme" content="dark" />
@@ -17,7 +17,7 @@
     <!-- OpenGraph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="LeeStream" />
-    <meta property="og:title" content="LeeStream: Sub-12ms LAN · 8K60 Split-Encode · Zero-Config WAN" />
+    <meta property="og:title" content="LeeStream v1.2: Permanent 9-Digit Device ID · Self-Hostable WSS + TURN · 4G Auto-Reconnect" />
     <meta property="og:description" content="Ultra-low-latency remote desktop and game streaming for Windows. 4K120, HDR10, 4:4:4, hardware encode on NVIDIA, AMD and Intel, and a zero-install Web Client. Free forever." />
     <meta property="og:url" content="https://meilihulee.github.io/leestream/" />
     <meta property="og:image" content="https://meilihulee.github.io/leestream/og-image.png" />
@@ -37,15 +37,18 @@
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "LeeStream",
-      "softwareVersion": "1.1.1",
+      "softwareVersion": "1.2.0",
       "operatingSystem": "Windows 10, Windows 11",
       "applicationCategory": "UtilitiesApplication",
+      "downloadUrl": "https://github.com/meilihulee/leestream/releases/download/v1.2.0/LeeStream-Host-Setup-1.2.0.exe",
       "url": "https://meilihulee.github.io/leestream/",
       "image": "https://meilihulee.github.io/leestream/og-image.png",
       "description": "Ultra-low-latency remote desktop and game streaming suite for Windows with 8K60 split-encode, 4K120, HDR10, 4:4:4, hardware encoding and zero-config WAN.",
-      "featureList": ["~9-26 ms LAN latency with signed VDD", "8K60 dual-instance split-encode", "4K120+", "HDR10", "YUV 4:4:4", "NVENC, AMF and QSV hardware encoding", "WebRTC with STUN/TURN", "6-digit pairing", "Gamepad passthrough", "Privacy Curtain", "Zero-install Web Client"],
+      "featureList": ["Sub-12ms LAN latency at 1080p120", "8K60 dual-instance split-encode", "4K120+", "HDR10", "YUV 4:4:4", "NVENC, AMF and QSV hardware encoding", "WebRTC with STUN/TURN", "6-digit pairing", "Gamepad passthrough", "Privacy Curtain", "Zero-install Web Client", "In-Car Cockpit Mode for car browsers", "Native WebView2 GUI", "48kHz Opus audio", "6-digit SPAKE2 pairing"],
       "offers": [
-        { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" }
+        { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Pro Monthly", "price": "4.99", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Pro Lifetime", "price": "39", "priceCurrency": "USD" }
       ]
     }
     </script>
@@ -56,12 +59,13 @@
       "mainEntity": [
         { "@type": "Question", "name": "Is LeeStream really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The free tier covers 1080p and 4K60 streaming over LAN and WAN, gamepads, clipboard and the Web Client, for personal use, with no time limit." } },
         { "@type": "Question", "name": "What is 8K60 split-encode?", "acceptedAnswer": { "@type": "Answer", "text": "LeeStream splits each 8K frame into two halves and encodes them on two hardware encoder instances in parallel, holding a locked 60 fps where a single encoder tops out around 55 fps." } },
-        { "@type": "Question", "name": "Do I need to forward ports?", "acceptedAnswer": { "@type": "Answer", "text": "No. LeeStream uses WebRTC with STUN for direct connections and falls back to TURN relays automatically." } }
+        { "@type": "Question", "name": "Do I need to forward ports?", "acceptedAnswer": { "@type": "Answer", "text": "No. LeeStream uses WebRTC with STUN for direct connections and falls back to TURN relays automatically." } },
+        { "@type": "Question", "name": "Can I stream to my car's screen?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Open ./web/#car=1 in the car's built-in browser while parked, scan the QR code shown by the Host, and LeeStream streams H.264 1080p60 with Opus audio, relayed over TURN on 4G/5G when needed. Nothing is installed in the car." } }
       ]
     }
     </script>
-    <script type="module" crossorigin src="./assets/index-CYv6TPkB.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-UmwaXqQr.css">
+    <script type="module" crossorigin src="./assets/index-BBmeu7GT.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-C2x3uyJ7.css">
   </head>
   <body>
     <div id="root"></div>
